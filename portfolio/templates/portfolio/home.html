@@ -1,0 +1,40 @@
+{% extends "portfolio/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="row justify-content-center my-3">
+  <div class="col-5">
+    <img src="{% static 'portfolio/robo.gif' %}" class="img-fluid">
+  </div>
+</div>
+
+<div class="row justify-content-center mb-3">
+  <div class="col-md-9 text-center">
+    <h1 id="hometext" class="font-weight-bold">Deepak is Commander-in-Chief at Techphobiax and lives in India 😊</h1>
+  </div>
+</div>
+
+<h2 class="mt-5">Portfolio</h2>
+<hr>
+<div class="row">
+  {% for pro in  project %}
+  <div class="col-lg-4 col-md-6">
+
+    {% if pro.url %}
+    <a href="{{ pro.url }}">
+      <img src="{{ pro.image.url }}" class="img-fluid mb-2">
+    </a>
+    {% else %}
+
+    <img src="{{ pro.image.url }}" class="img-fluid mb-2">
+    {% endif %}
+    <h3>{{ pro.title }}</h3>
+    <p>{{ pro.description }}</p>
+
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
